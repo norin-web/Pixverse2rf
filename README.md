@@ -16,12 +16,12 @@ pnpm build      # production build into dist/
 Push to `main` → GitHub Actions (`.github/workflows/deploy.yml`) builds and publishes to GitHub Pages.
 In the repo settings, Pages → Source must be **GitHub Actions**.
 
-Live URL (no custom domain yet): https://norin-web.github.io/Pixverse2rf/
+Live URL: https://pixversia.skin (custom domain, `public/CNAME`)
 
 ### base / custom domain trap
 
-`vite.config.ts` has `base: "/Pixverse2rf/"` because the site is served from a sub-path.
-When a custom domain is attached, in ONE commit: set `base: "/"` and add `public/CNAME` with the domain.
+`vite.config.ts` has `base: "/"` because the site is served from the domain root.
+If the domain is ever removed, in ONE commit: set `base: "/Pixverse2rf/"` and delete `public/CNAME`.
 Otherwise every asset 404s and the page is blank.
 
 ## Where things live
