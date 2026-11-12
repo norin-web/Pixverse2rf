@@ -240,6 +240,7 @@ ul, ol { list-style: none; }
 .footer__cols ul { display: flex; flex-direction: column; gap: 8px; }
 .footer__cols a { font-size: 14px; font-weight: 500; transition: opacity 0.2s; }
 .footer__cols a:hover { opacity: 0.6; }
+.footer__addr { max-width: 220px; font-size: 14px; line-height: 20px; opacity: 0.6; }
 .footer__bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; padding-top: 24px; border-top: 1px solid var(--ink-12); }
 .footer__bottom p { font-size: 13px; line-height: 20px; color: var(--ink-60); }
 .footer__legal { max-width: 760px; margin-top: 8px; font-size: 12px !important; line-height: 18px !important; color: var(--ink-50) !important; }
@@ -300,6 +301,8 @@ ul, ol { list-style: none; }
 .contact__addr { display: flex; flex-direction: column; gap: 8px; padding-top: 40px; }
 .contact__addr span { font-size: 13px; color: var(--faint); }
 .contact__addr a { font-size: clamp(24px, 2.4vw, 32px); line-height: 1.25; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.contact__addr--post { padding-top: 24px; }
+.contact__addr p { font-size: 16px; line-height: 24px; font-weight: 300; color: var(--w-72); }
 .contact__form { padding: 120px var(--pad); }
 .form { display: flex; flex-wrap: wrap; gap: 24px 16px; }
 .field { display: flex; flex-direction: column; gap: 8px; width: 100%; }
@@ -329,6 +332,9 @@ ul, ol { list-style: none; }
 .doc-tab:hover { color: var(--text); }
 .doc-tab.is-on { background: var(--surface); color: var(--text); font-weight: 500; }
 .doc-tab.is-on::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 40px; height: 2px; margin-left: -20px; border-radius: 2px; background: var(--white); }
+.doc-title { display: flex; flex-direction: column; gap: 16px; }
+.doc-kicker { font-size: 15px; line-height: 22px; font-weight: 300; color: var(--w-72); }
+.doc-meta dd a { text-decoration: underline; text-underline-offset: 3px; }
 .doc-meta { display: flex; flex-wrap: wrap; gap: 20px 48px; }
 .doc-meta div { display: flex; flex-direction: column; gap: 8px; }
 .doc-meta dt { font-size: 13px; color: var(--faint); }

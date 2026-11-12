@@ -12,7 +12,7 @@ export default function About() {
           <Reveal as="p" className="kicker">About</Reveal>
           <Split as="h1" className="h1 h1--xl" parts={[["We make it simple to turn an idea into moving pictures"]]} />
           <Reveal as="p" className="body body--lg about-hero__sub" delay={300}>
-            PixVerse for iPhone is built and published by {site.operator}. One app, one chat and the models people ask for most.
+            PixVerse for iPhone is published by {site.operator} from Madrid, under an authorization from the PixVerse brand rights holder. One app, one prompt box and the models people ask for most.
           </Reveal>
         </div>
       </section>
@@ -25,7 +25,7 @@ export default function About() {
             <b>We put them behind one prompt box instead.</b>
           </Reveal>
           <Reveal as="p" className="body body--lg" delay={120}>
-            You describe what you want, pick a model if you care which one, and get the result in the same thread. Video or image, the way you work stays the same.
+            You describe what you want, pick a model if you care which one, and get the result right under your prompt. Video or image, the way you work stays the same.
           </Reveal>
         </div>
       </section>

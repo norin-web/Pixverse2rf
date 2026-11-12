@@ -22,7 +22,7 @@ export default function OurApp() {
       <section className="split-hero sec">
         <div className="split-hero__text">
           <Reveal as="p" className="kicker">The app</Reveal>
-          <Split as="h1" className="h1" parts={[["Video and images, made in one chat"]]} />
+          <Split as="h1" className="h1" parts={[["Video and images, made in one place"]]} />
           <Reveal as="p" className="body body--lg" delay={250}>
             PixVerse turns a sentence or a photo into a short video or a still image. Two tabs, eighteen models and one prompt box.
           </Reveal>

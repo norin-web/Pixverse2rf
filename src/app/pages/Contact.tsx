@@ -16,6 +16,10 @@ export default function Contact() {
           <span>Email</span>
           <a href={`mailto:${site.email}`}>{site.email}</a>
         </Reveal>
+        <Reveal className="contact__addr contact__addr--post" delay={360}>
+          <span>Post</span>
+          <p>{site.operator}, {site.address}</p>
+        </Reveal>
       </div>
       <div className="contact__form">
         <MailForm
@@ -24,7 +28,7 @@ export default function Contact() {
           fields={[
             { name: "name", label: "Name", required: true, auto: "name", placeholder: "Your name", half: true },
             { name: "email", label: "Email", type: "email", required: true, auto: "email", placeholder: "you@example.com", half: true },
-            { name: "topic", label: "Topic", options: ["Question about the app", "Bug report", "Idea or feedback", "Billing and subscription"] },
+            { name: "topic", label: "Topic", options: ["Question about the app", "Bug report", "Idea or feedback", "Billing and subscription", "Privacy request"] },
             { name: "message", label: "Message", textarea: true, required: true, placeholder: "Tell us what happened or what you would like to see" },
           ]}
         />

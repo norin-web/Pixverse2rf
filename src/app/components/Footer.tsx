@@ -36,6 +36,7 @@ export default function Footer() {
               <span className="footer__h">Contact</span>
               <ul>
                 <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+                <li className="footer__addr">{site.address}</li>
               </ul>
             </div>
           </div>

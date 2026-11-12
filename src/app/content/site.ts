@@ -1,22 +1,24 @@
 // Every brand / app fact lives here so names, IDs and emails are never duplicated.
-// Facts come from the app's own screens in Figma (Pixverse-v2, Design [MVP]).
-// PLACEHOLDER values are marked — replace them when the owner's documents arrive.
+// Facts come from the app's own screens in Figma (Pixverse-v2, Design [MVP])
+// and from the owner's Privacy Policy / Terms of Use (effective 2026-11-12).
 
 export const site = {
   brand: "PixVerse",
   email: "koen@veluizen.space",
   year: new Date().getFullYear(),
-  operator: "Operator Name", // PLACEHOLDER: company from the Privacy Policy / Terms
-  // PLACEHOLDER: replace with the trademark wording from the owner's documents
+  operator: "Koen Veluizen",
+  address: "C. del Bastero, 13, 28005 Madrid, Spain",
+  // brand wording follows section 9 of the Terms / section 12 of the Privacy Policy
   disclaimer:
-    "Model names such as Kling, Seedance, Sora, GPT Image and Nano Banana belong to their respective owners. Apple, iPhone and App Store are trademarks of Apple Inc.",
+    "PixVerse is used under a signed Simplified Brand Authorization Agreement with AISPHERE LIMITED, the brand rights holder. Model names belong to their respective owners. Apple, iPhone and App Store are trademarks of Apple Inc.",
 };
 
 export const app = {
   id: "6815764831",
   url: "https://apps.apple.com/app/id6815764831",
-  // App isn't live yet (iTunes lookup returns 0 results, 2026-11-11).
-  minIOS: "17", // PLACEHOLDER: confirm with the owner or the store listing
+  // App isn't live yet (iTunes lookup returns 0 results, 2026-11-12) and the documents
+  // don't name an iOS version, so the "Requires iOS" lines stay hidden while this is empty.
+  minIOS: "",
   category: "AI Video Generator",
 };
 
@@ -63,13 +65,13 @@ export const steps = [
 export const features = [
   {
     title: "Type and create",
-    text: "Describe the scene in plain words and tap Generate. Your prompt, the progress and the finished clip stay in one chat thread, so you can ask for a change right under the result.",
+    text: "Describe the scene in plain words and tap Generate. Your prompt, the progress and the finished clip stay on one screen, so you can ask for a change right under the result.",
     phone: "/images/phone-generating.webp",
     bg: "/images/bg-1.webp",
   },
   {
     title: "Bring a photo to life",
-    text: "Attach a picture from Photos or take a shot with the camera, then describe how it should move. The result lands in the same chat, ready to play.",
+    text: "Attach a picture from Photos or take a shot with the camera, then describe how it should move. The result appears right below, ready to play.",
     phone: "/images/phone-photo.webp",
     bg: "/images/bg-2.webp",
   },
@@ -80,14 +82,14 @@ export const features = [
     bg: "/images/bg-3.webp",
   },
   {
-    title: "Images in the same chat",
+    title: "Images in the same place",
     text: "Switch to the Image tab to make stills with Qwen-Image, GPT Image 2, Nano Banana 2 and six more models. Same prompt box, same settings, same history.",
     phone: "/images/phone-image.webp",
     bg: "/images/bg-4.webp",
   },
   {
     title: "Save and share",
-    text: "Every result opens full screen. Download it to your iPhone or share it in a tap, and find earlier videos and images in Generation History.",
+    text: "Every result opens full screen. Save it to Photos or share it in a tap. Earlier videos and images stay in Generation History on your iPhone.",
     phone: "/images/phone-share.webp",
     bg: "/images/bg-5.webp",
   },
@@ -101,7 +103,7 @@ export const facts = [
 ];
 
 export const reel = [
-  { src: "/images/shot-home.webp", label: "Start a chat" },
+  { src: "/images/shot-home.webp", label: "Start with a prompt" },
   { src: "/images/phone-models.webp", label: "Select AI Model" },
   { src: "/images/phone-generating.webp", label: "Generating video" },
   { src: "/images/phone-share.webp", label: "Your video" },
@@ -110,26 +112,27 @@ export const reel = [
 
 export const specs: [string, string][] = [
   ["Platform", "iPhone"],
-  ["Requires", `iOS ${app.minIOS} or later`],
+  ...(app.minIOS ? [["Requires", `iOS ${app.minIOS} or later`] as [string, string]] : []),
+  ["Account", "Not needed, no sign-up"],
   ["Modes", "Text to video, photo to video, text to image"],
   ["Models", `${videoModels.length} for video, ${imageModels.length} for images`],
   ["Quality", qualities.join(", ")],
   ["Frame", frames.join(", ")],
-  ["Price", "Free to download, Premium subscription with a free trial"],
+  ["Price", "Free to download, Premium auto-renewable subscription"],
   ["Developer", site.operator],
 ];
 
 export const principles = [
-  { title: "One chat for everything", text: "Prompts, photos, progress and results live in one thread, for video and for images." },
+  { title: "One place for everything", text: "Prompts, photos, progress and results stay on one screen, for video and for images." },
   { title: "Your pick of models", text: "Switch between leading models in a tap and compare what each one does with the same idea." },
-  { title: "Results you keep", text: "Download any clip or image to your iPhone, share it anywhere, or find it later in Generation History." },
+  { title: "Kept on your iPhone", text: "No account and no cloud gallery. Your history stays on the device, and you save or share results when you choose." },
 ];
 
-// Answers follow the app's screens; check against the owner's documents when they arrive.
+// Answers follow the app's screens and the Privacy Policy / Terms of Use (2026-11-12).
 export const faq = [
   {
     q: "How do I make my first video?",
-    a: "Open the Video tab, type what you want to see in the prompt box and tap Generate. The finished clip appears in the chat, ready to download or share.",
+    a: "Open the Video tab, type what you want to see in the prompt box and tap Generate. The finished clip appears under your prompt, ready to save or share.",
   },
   {
     q: "How do I turn a photo into a video?",
@@ -137,29 +140,42 @@ export const faq = [
   },
   {
     q: "Which AI models can I use?",
-    a: `The Video tab has ${videoModels.map((m) => m.name).join(", ")}. The Image tab has ${imageModels.map((m) => m.name).join(", ")}. Pick one in Select AI Model above the chat.`,
+    a: `The Video tab has ${videoModels.map((m) => m.name).join(", ")}. The Image tab has ${imageModels.map((m) => m.name).join(", ")}. Pick one in Select AI Model above the prompt box.`,
   },
   {
     q: "How do I change the quality or the frame?",
-    a: `Tap the quality chip above the chat to choose ${qualities.join(", ")}, or the frame chip to choose ${frames.join(", ")}.`,
+    a: `Tap the quality chip above the prompt box to choose ${qualities.join(", ")}, or the frame chip to choose ${frames.join(", ")}.`,
   },
   {
     q: "Is PixVerse free?",
-    a: "PixVerse is free to download. A Premium subscription with a free trial adds every model and HD quality. Prices are shown in the app before you subscribe.",
+    a: "PixVerse is free to download. Premium is an auto-renewable subscription that adds every model and HD quality. The plan, price and any trial are shown in the App Store purchase sheet before you pay.",
   },
   {
     q: "How do I cancel my subscription?",
-    a: "Subscriptions are billed through your Apple ID. Open Settings on your iPhone, tap your name, then Subscriptions, choose PixVerse and tap Cancel Subscription. Premium stays active until the end of the paid period. Deleting the app doesn’t cancel it.",
+    a: "Subscriptions are billed through your Apple ID. Open Settings on your iPhone, tap your name, then Subscriptions, choose PixVerse and tap Cancel Subscription. Premium generally stays active until the end of the paid period. Deleting the app doesn’t cancel it.",
   },
   {
     q: "How do I restore a purchase?",
-    a: "Open the Premium screen in the app and tap Restore while signed in with the Apple ID you used to buy. Refunds and billing are handled by Apple.",
+    a: "Open the Premium screen in the app and tap Restore while signed in with the Apple ID you used to buy. Billing and refund requests are handled by Apple.",
   },
   {
     q: "How do I clear my Generation History?",
-    a: "Open Generation History from the clock icon at the top of the chat, tap the delete button and confirm Clear history. This can’t be undone.",
+    a: "Open Generation History from the clock icon at the top of the screen, tap the delete button and confirm Clear history. This can’t be undone. Copies you saved to Photos or shared stay where they are.",
   },
 ];
 
-/** Home shows the first five questions; Support shows all of them. */
-export const homeFaq = [faq[0], faq[2], faq[4], faq[5], { q: "Where are my videos saved?", a: "Every result is kept in Generation History inside the app. Tap Download on a result to save a copy to your iPhone." }];
+faq.push(
+  {
+    q: "Do I need an account?",
+    a: "No. PixVerse has no sign-up or login. Your prompts, results and Generation History are stored on your iPhone, not on a server of ours.",
+  },
+  {
+    q: "What happens to my prompts and photos?",
+    a: "When you tap Generate, the prompt and any photo you attached are sent to Google’s AI services to create the result. Nothing is posted publicly. Details are in the Privacy Policy.",
+  },
+);
+
+const saved = { q: "Where are my videos saved?", a: "Every result is kept in Generation History on your iPhone. Tap Download on a result to save a copy to Photos." };
+
+/** Home shows five questions; Support shows all of them. */
+export const homeFaq = [faq[0], faq[4], faq[5], faq[8], saved];

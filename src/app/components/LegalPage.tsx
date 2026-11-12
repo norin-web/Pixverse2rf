@@ -1,15 +1,23 @@
 import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import { site } from "../content/site";
-import { legalUpdated, type LegalDoc } from "../content/legal";
+import { type LegalDoc } from "../content/legal";
 import Btn from "./Btn";
 import Reveal from "./Reveal";
 
 type Section = { id: string; title: string; blocks: string[] };
 
-// turn plain email addresses into mailto links, text otherwise untouched
+// turn plain emails and https links into real links; the wording itself is untouched
 const linkify = (text: string) =>
-  text.split(/(\S+@\S+\.[a-z]{2,})/i).map((part, i) => (/@/.test(part) ? <a key={i} href={`mailto:${part}`}>{part}</a> : part));
+  text.split(/(https?:\/\/[^\s)]+[^\s).,]|[^\s(]+@[^\s]+\.[a-z]{2,})/i).map((part, i) =>
+    /^https?:\/\//.test(part) ? (
+      <a key={i} href={part} target="_blank" rel="noopener noreferrer">{part}</a>
+    ) : /@/.test(part) && !/\s/.test(part) ? (
+      <a key={i} href={`mailto:${part}`}>{part}</a>
+    ) : (
+      part
+    ),
+  );
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
@@ -97,11 +105,15 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
             Terms of Use
           </Link>
         </nav>
-        <h1 className="h1">{doc.title}</h1>
+        <div className="doc-title">
+          <h1 className="h1">{doc.title}</h1>
+          <p className="doc-kicker">{doc.kicker.replace(/\s+•\s+/, " · ")}</p>
+        </div>
         <dl className="doc-meta">
-          <div><dt>Last updated</dt><dd>{doc.body ? legalUpdated : "Coming soon"}</dd></div>
+          {doc.meta.map(([k, v]) => (
+            <div key={k}><dt>{k}</dt><dd>{linkify(v)}</dd></div>
+          ))}
           {sections.length > 0 && <div><dt>Sections</dt><dd>{sections.length}</dd></div>}
-          <div><dt>Questions</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
         </dl>
       </section>
 

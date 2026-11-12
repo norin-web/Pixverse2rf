@@ -34,7 +34,7 @@ function HowTo() {
   const { ref, shown } = useReveal<HTMLDivElement>("-120px");
   return (
     <section className="how sec">
-      <Lead className="how__lead" muted="From an idea to a finished clip." strong="Three steps, all inside one chat." />
+      <Lead className="how__lead" muted="From an idea to a finished clip." strong="Three steps, all inside the app." />
       <div ref={ref} className={`diagram${shown ? " is-in" : ""}`}>
         <svg className="diagram__lines" viewBox="0 0 1278 560" fill="none" aria-hidden="true">
           <path pathLength={1} d="M0 300H236M556 300H744M760 284V190Q760 150 800 150H884M760 316V410Q760 450 800 450H884M1204 150H1278M1204 450H1278M396 268V100Q396 60 436 60H1278" />
@@ -64,12 +64,12 @@ export default function Home() {
           <Split as="h1" className="hero__title" parts={[["Type one sentence."], ["\n"], ["Watch it move."]]} />
           <Reveal className="hero__actions" delay={350}>
             <Btn href={app.url}>Download on the App Store</Btn>
-            <p className="note">Free on the App Store. Requires iOS {app.minIOS} or later.</p>
+            <p className="note">Free on the App Store.{app.minIOS && ` Requires iOS ${app.minIOS} or later.`}</p>
           </Reveal>
         </div>
         <div className="hero__stage">
           <img className="hero__band" src={img("/images/hero-band.webp")} alt="" width={1600} height={650} decoding="async" />
-          <Phone src="/images/phone-chat.webp" alt="PixVerse chat with a generated video ready to play" size="lg" eager />
+          <Phone src="/images/phone-chat.webp" alt="PixVerse Video tab with a generated clip ready to play" size="lg" eager />
         </div>
       </section>
 
